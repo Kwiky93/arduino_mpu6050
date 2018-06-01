@@ -11,7 +11,6 @@ Ver: 0.2 beta --- Bug fixed for calculating "angle_y_accel" and "angle_x_accel" 
   
   extern int accel_x_OC, accel_y_OC, accel_z_OC, gyro_x_OC ,gyro_y_OC, gyro_z_OC; // offset variables
   extern float temp_scalled,accel_x_scalled,accel_y_scalled,accel_z_scalled,gyro_x_scalled,gyro_y_scalled,gyro_z_scalled; //Scaled Data variables
-
   
   void MPU6050_ReadData();
   void MPU6050_ResetWake();
@@ -20,4 +19,3 @@ Ver: 0.2 beta --- Bug fixed for calculating "angle_y_accel" and "angle_x_accel" 
   void MPU6050_OffsetCal();
  
 #endif
-

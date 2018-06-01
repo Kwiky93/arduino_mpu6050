@@ -10,9 +10,7 @@ Ver: 0.2 beta --- Bug fixed for calculating "angle_y_accel" and "angle_x_accel" 
 #include <Wire.h>
 #include "gyro_accel.h"
 
-
 // Defining the important registers
-
 #define MPU6050_address 0x68
 
 // ------ SELF Test Trim Factors ----------------------
@@ -36,15 +34,12 @@ Ver: 0.2 beta --- Bug fixed for calculating "angle_y_accel" and "angle_x_accel" 
 // ----- Data ---------------------------------------------
 #define MPU6050_data_start 59
 
-
-
 // ----- Power Management --------------------------------- 
 #define MPU6050_PWR1 107
 #define MPU6050_PWR2 108
 
 // ----- Defining Constant --------------------------------
 #define g 9.81                       // Gravitational accelration
-
 
 // Variables 
 int temp=0, accel_x=0, accel_y=0, accel_z=0, gyro_x=0, gyro_y=0, gyro_z=0; // Raw values varaibles
@@ -238,8 +233,6 @@ void MPU6050_OffsetCal(){
   Serial.print("gyro_z register offset = ");
   Serial.println(z);
  
-  
-  
   // Accel Offset Calculation
   Serial.println("Calibrating accelrometer .... dont move the hardware ..........");
   x=accel_x;
