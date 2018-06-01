@@ -1,5 +1,5 @@
-#ifndef MPU6050
-#define MPU6050
+#ifndef myMPU6050
+#define myMPU6050
 
 #include "Arduino.h"
 #include "Wire.h"
@@ -15,15 +15,16 @@
 #define MPU6050_TEMP_L       0x42
 
 class MPU6050{
-	public:
-		MPU6050(TwoWire &w, float aC = 0.02f, float gC = 0.98f);
-		
-		byte readData(byte addr = MPU6050_ADDR, byte reg);
+  public:
+    MPU6050(TwoWire &w, float aC = 0.02f, float gC = 0.98f);
+    
+    byte readData(byte addr, byte reg);
 
-		int16_t wireRead();
-	private:
-		TwoWire *wire;
-
-		int16_t rawAccX, rawAccY, rawAccZ, rawTemp, rawGyroX, rawGyroY, rawGyroZ;
+    int16_t wireRead();
+  private:
+    TwoWire *wire;
+    float accCoef, gyroCoef;
+    int16_t rawAccX, rawAccY, rawAccZ, rawTemp, rawGyroX, rawGyroY, rawGyroZ;
 };
-#endif MPU6050
+#endif myMPU6050
+

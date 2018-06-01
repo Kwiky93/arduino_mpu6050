@@ -128,7 +128,7 @@ void MPU6050::getDataFromSensor(){
 	rawAccX = wireRead();
 	rawAccY = wireRead();
 	rawAccZ = wireRead();
-	rawTemp = wireRead();w
+	rawTemp = wireRead();
 	rawGyroX = wireRead();
 	rawGyroY = wireRead();
 	rawGyroZ = wireRead();
