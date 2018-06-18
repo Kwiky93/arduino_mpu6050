@@ -23,13 +23,18 @@ class MPU6050{
     void writeMPU6050(byte addr, byte reg, byte data);
     int16_t read16bit(byte addr, byte reg);
 
+    void offset(byte addr, byte startReg);
+    void getAllData(byte addr, byte startReg);
+    
+    int16_t OS_X, OS_Y, OS_Z,OS_AX,OS_AY,OS_AZ;
+    int16_t rawAccX, rawAccY, rawAccZ, rawTemp, rawGyroX, rawGyroY, rawGyroZ;
     int16_t test1,test2;
     
     void begin();
   private:
     TwoWire *wire;
     float accCoef, gyroCoef;
-    int16_t rawAccX, rawAccY, rawAccZ, rawTemp, rawGyroX, rawGyroY, rawGyroZ;
+    
     
 };
 #endif

@@ -35,9 +35,43 @@ void MPU6050::begin(){
 int16_t MPU6050::read16bit(byte addr, byte startReg){
   wire->beginTransmission(addr);
   wire->write(startReg);
-  wire->endTransmission(false);//TODO
-  wire->requestFrom((int)addr, 2, true);//TODO
+  wire->endTransmission(false);
+  wire->requestFrom((int)addr, 2);
   
   return wire->read()<<8 | wire->read();
+}
+
+void MPU6050::offset(byte addr, byte startReg){
+  int x = 0,y = 0,z = 0;
+  for (int i = 0; i < 1000; i++){
+    getAllData(addr, startReg);
+    OS_AX += rawAccX;
+    OS_AY += rawAccY;
+    OS_AZ += rawAccZ;
+    OS_X += rawGyroX;
+    OS_Y += rawGyroY;
+    OS_Z += rawGyroZ;
+  }
+  OS_AX = OS_AX/1000;
+  OS_AY = OS_AY/1000;
+  OS_AZ = OS_AZ/1000;
+  OS_X = OS_X/1000;
+  OS_Y = OS_Y/1000;
+  OS_Z = OS_Z/1000;
+}
+
+void MPU6050::getAllData(byte addr, byte startReg){
+  wire->beginTransmission(addr);
+  wire->write(startReg);
+  wire->endTransmission(false);
+  wire->requestFrom((int)addr, 14);
+  
+  rawAccX = wire->read()<<8 | wire->read();
+  rawAccY = wire->read()<<8 | wire->read();
+  rawAccZ = wire->read()<<8 | wire->read();
+  rawTemp = wire->read()<<8 | wire->read();
+  rawGyroX = wire->read()<<8 | wire->read();
+  rawGyroY = wire->read()<<8 | wire->read();
+  rawGyroZ = wire->read()<<8 | wire->read();
 }
 
